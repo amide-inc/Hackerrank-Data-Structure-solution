@@ -1,26 +1,36 @@
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
+import java.util.Scanner;
 
-public class Solution {
+public class h4 {
 
     public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner in = new Scanner(System.in);
-        int size = in.nextInt();
         int n = in.nextInt();
-        int[] arr = new int[size];
-
-        for(int i = 0; i < size; i++) {
-            if(n > i) 
-                arr[size - n + i] = in.nextInt();
-            else
-                arr[i - n] = in.nextInt();
+        int d = in.nextInt();
+        int arr[] = new int[n];
+        for(int i=0;i<n;i++) {
+            arr[i] = in.nextInt();
+        }
+        int res[] = new int[n];
+        int k = d%n;
+        if(k!=0) {
+            for(int i=0;i<k;i++) {
+                res[n-k+i] = arr[i];
+            }
+            for(int i=k;i<n;i++) {
+                res[i-k] = arr[i];
+            }
+        }
+        if(k==0) {
+            for(int i=0;i<n;i++)
+                System.out.print(arr[i]+" ");
+            
+        }else {
+            for(int i=0;i<n;i++)
+                System.out.print(res[i]+" ");
         }
         
-        for(int i = 0; i < size; i++)
-            System.out.print(arr[i] + " ");
+
     }
+    
+
 }
